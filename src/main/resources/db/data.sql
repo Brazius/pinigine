@@ -1,0 +1,1 @@
+INSERT INTO Currency("US Dolar", "USD", '100', '3.92');
