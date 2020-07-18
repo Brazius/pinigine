@@ -1,1 +1,1 @@
-INSERT INTO Currency("US Dolar", "USD", '100', '3.92');
+INSERT INTO Currency(name, code, amount, rate) values("Ripple", "XRP", 100, 0.2);
