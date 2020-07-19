@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactTable from "react-table";
 
 class Currencies extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class Currencies extends Component {
     }
 
 componentDidMount() {
-    fetch('http://localhost:8080/currencies', {headers: {"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5NTE2MTQ3OX0.jLhX73yA8XHJ8nX2eS2ZwNd_lZFpJAMXoVh_4yVPcQ7NEdTglnVIkBlH21cQVugwEJWMi7bM-rSLppW12Beh-A"} })  
+    fetch('http://localhost:8080/currencies', {headers: {"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5NTI2NTI0OX0.dyczMGv1OWyv00p_Te0E7n_WLWNYm6REINogeLVruVbfXRvWQRNcSq4lRDGEChjaY-pO3a0FXcuXacH7oOOaoQ"} })  
     .then((response) => response.json())  
     .then((responseData) => {  
         this.setState({  
@@ -18,19 +19,25 @@ componentDidMount() {
 }
 
     render() {
-        const tableRows = this.state.currencies.map((currency, index) =>
-            <tr key={index}>
-                <td>{currency.name}</td>
-                <td>{currency.code}</td>
-                <td>{currency.amount}</td>
-                <td>{currency.rate}</td>
-            </tr>
-        );
+        const columns = [{
+            Header: 'Currency',
+            accessor: 'name',
+            Cell: this.editable
+        }, {
+            Header: 'Code',
+            accessor: 'code',
+            Cell: this.editable
+        }, {
+            Header: 'Amount',
+            accessor: 'amount'
+        }, {
+            Header: 'Rate',
+            accessor: 'rate'
+        }
+            ];
         return (
-            <div className="App">
-                <table>
-        <tbody>{tableRows}</tbody>
-                </table>
+            <div>
+          <ReactTable data={this.state.currencies} columns={columns} filterable={true}/>
             </div>
         );
     }
