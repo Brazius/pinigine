@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table-v6'
 import 'react-table-v6/react-table.css'
+import AddCurrency from './AddCurrency';
 
 class Currencies extends Component {
     constructor(props) {
@@ -38,7 +39,8 @@ class Currencies extends Component {
             ,];
         return (
             <div className="App">
-               <ReactTable data={this.state.currencies} columns={columns} filterable={true}/>
+                <AddCurrency addCurrency={this.addCurrency} fetchCurrencies={this.fetchCurrencies} />
+                <ReactTable data={this.state.currencies} columns={columns} filterable={true} />
             </div>
         );
     }
