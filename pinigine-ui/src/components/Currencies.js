@@ -1,22 +1,23 @@
-import React, {Component} from 'react';
-import ReactTable from "react-table";
+import React, { Component } from 'react';
+import ReactTable from 'react-table-v6'
+import 'react-table-v6/react-table.css'
 
 class Currencies extends Component {
     constructor(props) {
         super(props);
-        this.state = {currencies: []};
+        this.state = { currencies: [] };
     }
 
-componentDidMount() {
-    fetch('http://localhost:8080/currencies', {headers: {"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5NTI2NTI0OX0.dyczMGv1OWyv00p_Te0E7n_WLWNYm6REINogeLVruVbfXRvWQRNcSq4lRDGEChjaY-pO3a0FXcuXacH7oOOaoQ"} })  
-    .then((response) => response.json())  
-    .then((responseData) => {  
-        this.setState({  
-            currencies: responseData  
-        })  
-    })  
-    .catch(err => console.error(err))
-}
+    componentDidMount() {
+        fetch('http://localhost:8080/currencies', { headers: { "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU5NTMzMDkzNn0.3TwAdUoeglA6PjliXEbRtV_pSWo91U5b_jCJE48XT-3VIFLt2eutoiHrrRWdR-Yt77fxb6cv5mPQJe_ydc5qmw" } })
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({
+                    currencies: responseData
+                })
+            })
+            .catch(err => console.error(err))
+    }
 
     render() {
         const columns = [{
@@ -34,10 +35,10 @@ componentDidMount() {
             Header: 'Rate',
             accessor: 'rate'
         }
-            ];
+            ,];
         return (
-            <div>
-          <ReactTable data={this.state.currencies} columns={columns} filterable={true}/>
+            <div className="App">
+               <ReactTable data={this.state.currencies} columns={columns} filterable={true}/>
             </div>
         );
     }

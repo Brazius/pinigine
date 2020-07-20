@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Currencies from "./components/Currencies";
 
@@ -9,7 +9,7 @@ class App extends Component {
                 <header className="Header">
                     <h1 className="App-title">Currencies</h1>
                 </header>
-                <Currencies/>
+                <Currencies />
             </div>
         )
     }

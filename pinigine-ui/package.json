@@ -10,7 +10,9 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "3.4.1",
+    "react-skylight": "^0.5.1",
     "react-table": "^7.3.0",
+    "react-table-v6": "^6.8.6",
     "reactable": "^1.1.0"
   },
   "scripts": {
